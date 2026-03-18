@@ -18,7 +18,7 @@ export function MovingMarkerProvider({ children }) {
     const [selectedLinhas, setSelectedLinhas] = useState(null)
     const [selectedBRT, setSelectedBRT] = useState(null)
     const [trackedSPPO, setTrackedSPPO] = useState([])
-    const [showBRT, setShowBRT] = useState(true);
+    const [showBRT, setShowBRT] = useState(false);
     const [showSPPO, setShowSPPO] = useState(true);
 
     const wktToGeoJson = (wkt) => {
