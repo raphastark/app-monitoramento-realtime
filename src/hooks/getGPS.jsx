@@ -12,7 +12,7 @@ export function GPSProvider({ children }) {
     let allBuses = [];
 
     async function getGPS() {
-        await axios.get('https://dados.mobilidade.rio/gps/brt').then(({ data }) => {
+        await axios.get('/api/brt').then(({ data }) => {
             data.veiculos.forEach((item) => {
                 allBuses.push(item);
             });
@@ -29,7 +29,7 @@ export function GPSProvider({ children }) {
         const formattedDataInicial = format(fiveMinutesAgo, "yyyy-MM-dd+HH:mm:ss");
         const formattedDataFinal = format(currentDate, "yyyy-MM-dd+HH:mm:ss");
 
-        await axios.get(`https://dados.mobilidade.rio/gps/sppo?&dataInicial=${formattedDataInicial}&dataFinal=${formattedDataFinal}`)
+        await axios.get(`/api/sppo?dataInicial=${formattedDataInicial}&dataFinal=${formattedDataFinal}`)
             .then((response) => {
                 allSPPO = response.data.filter(item =>
                     item.ordem?.startsWith('B51') || item.ordem?.startsWith('C51'))
