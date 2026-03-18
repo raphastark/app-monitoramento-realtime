@@ -31,9 +31,8 @@ export function GPSProvider({ children }) {
 
         await axios.get(`https://dados.mobilidade.rio/gps/sppo?&dataInicial=${formattedDataInicial}&dataFinal=${formattedDataFinal}`)
             .then((response) => {
-                response.data.forEach((item) => {
-                    allSPPO.push(item)
-                })
+                allSPPO = response.data.filter(item =>
+                    item.ordem?.startsWith('B51') || item.ordem?.startsWith('C51'))
                 setRealtimeSPPO([...allSPPO])
                 allSPPO = []
             })
