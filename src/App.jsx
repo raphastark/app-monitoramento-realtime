@@ -8,7 +8,7 @@ import Tables from "./components/table"
 import Logos from "./components/logos"
 
 function App() {
-  const { trackedSPPO, selectedLinhas, showSPPO } = useContext(MovingMarkerContext)
+  const { trackedSPPO, selectedLinhas } = useContext(MovingMarkerContext)
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   const toggleDropdown = () => {
@@ -63,7 +63,7 @@ function App() {
         />
         <div id="map"></div>
       <LayerGroup>
-          {showSPPO && trackedSPPO
+          {trackedSPPO
             ? trackedSPPO
               .filter(e => !selectedLinhas?.length || selectedLinhas?.some(selected => selected.value === e.linha))
               .map(e => (
