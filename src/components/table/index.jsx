@@ -3,7 +3,7 @@ import { MovingMarkerContext } from "../../hooks/getMovingMarkers"
 import Select from 'react-select';
 
 function Tables() {
-    const {tracked, trackedSPPO, selectedLinhas, setSelectedLinhas, setShowSPPO, setShowBRT, showBRT, showSPPO} = useContext(MovingMarkerContext)
+    const {trackedSPPO, selectedLinhas, setSelectedLinhas} = useContext(MovingMarkerContext)
 
     function countLinhas(data) {
         const linhaCounts = {};
@@ -30,41 +30,16 @@ function Tables() {
 
   return (
     <div >
-        
           <table className=" border-separate border-spacing-1 ">
             <thead>
-                <th>
-                    BRT
-                </th>
-                <th>
-                  SPPO
-                </th>
+                <tr>
+                  <th>SPPO</th>
+                </tr>
             </thead>
             <tbody>
                 <tr>
-                      <td> {tracked.length}</td>
-                      
-                      <td>
-                          {trackedSPPO.length}
-                      </td>
+                      <td>Veículos: {trackedSPPO.length}</td>
                 </tr>
-                <tr>
-                      <td>  <input
-                          type="checkbox"
-                          checked={showBRT}
-                          onChange={() => setShowBRT(!showBRT)}
-                      /></td>
-                      
-                      <td>
-                          <input
-                              type="checkbox"
-                              checked={showSPPO}
-                              onChange={() => setShowSPPO(!showSPPO)}
-                          />
-                      </td>
-                </tr>
-
-                
             </tbody>
         </table >
           <div className="my-10">
